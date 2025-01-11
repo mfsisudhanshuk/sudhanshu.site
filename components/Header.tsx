@@ -18,13 +18,16 @@ export default function Header({ theme }: { theme: Theme }) {
             </ul>
           </nav>
           <div className="flex items-center space-x-4">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className={theme.headerLink}>
+            <a href="https://github.com/sd8917" target="_blank" rel="noopener noreferrer" className={theme.headerLink}>
               <GitHub size={20} />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={theme.headerLink}>
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className={theme.headerLink}>
+              <GitHub size={20} />
+            </a>
+            <a href="https://www.linkedin.com/in/sudhanshu-site/" target="_blank" rel="noopener noreferrer" className={theme.headerLink}>
               <Linkedin size={20} />
             </a>
-            <a href="mailto:example@email.com" className={theme.headerLink}>
+            <a href="mailto:sudhanshuraj8917@email.com" className={theme.headerLink}>
               <Mail size={20} />
             </a>
             <Link href="/admin" className={theme.headerLink}>
