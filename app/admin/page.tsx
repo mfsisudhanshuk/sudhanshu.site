@@ -9,8 +9,9 @@ export default function AdminPage() {
   const router = useRouter()
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (password === 'admin123') { // In a real app, use a more secure authentication method
+    e.preventDefault();
+    const correctPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
+    if (password === correctPassword) { // In a real app, use a more secure authentication method
       localStorage.setItem('editMode', 'true')
       router.push('/')
     } else {
