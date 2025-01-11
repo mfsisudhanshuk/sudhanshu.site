@@ -68,12 +68,12 @@ export default function Resume({ theme }: { theme: Theme }) {
     {
       category: "Frontend",
       icon: <Code />,
-      items: ["JavaScript", "React", "Next.js", "HTML", "CSS", "Tailwind CSS"],
+      items: ["JavaScript/Typescript", "React", "Next.js", "HTML 5", "CSS", "Tailwind CSS", "Material MUI", "Microfrontend"," "],
     },
     {
       category: "Backend",
       icon: <Server />,
-      items: ["Node.js", "Express", "GraphQL", "REST APIs"],
+      items: ["Node.js", "Express","Fastify", "AWS Deployment/CI/CD","Data Scrapping", "GraphQL", "REST APIs", "Payment gateway Integration"],
     },
     {
       category: "Database",
@@ -83,17 +83,17 @@ export default function Resume({ theme }: { theme: Theme }) {
     {
       category: "DevOps",
       icon: <Terminal />,
-      items: ["Docker", "Kubernetes", "CI/CD", "AWS"],
+      items: ["Docker", "CI/CD", "AWS","Ubuntu"],
     },
     {
       category: "Design",
       icon: <Palette />,
-      items: ["Figma", "Adobe XD", "Responsive Design"],
+      items: ["Responsive Design"],
     },
     {
       category: "Languages",
       icon: <Globe />,
-      items: ["TypeScript", "Python", "Java"],
+      items: ["Javascript/TypeScript", "Python", "C++"],
     },
   ]);
 
@@ -102,19 +102,19 @@ export default function Resume({ theme }: { theme: Theme }) {
       icon: <GitBranch />,
       title: "Open Source Contributor",
       description:
-        "Actively contributing to various open-source projects in the JavaScript ecosystem.",
+        "Actively contributing to various open-source projects in the MERN stack ecosystem.Current working on pivot table open source project.",
     },
     {
       icon: <BookOpen />,
       title: "Tech Blogger",
       description:
-        "Writing articles on modern web development techniques and best practices.",
+        "Reading and Writing articles on modern web development techniques and best practices.",
     },
     {
       icon: <Users />,
       title: "Meetup Organizer",
       description:
-        "Organizing local JavaScript meetups to foster community learning and networking.",
+        "Organizing local MERN or c++ dsa meetups to foster community learning and networking.",
     },
   ]);
 
