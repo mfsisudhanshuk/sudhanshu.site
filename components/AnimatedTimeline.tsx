@@ -1,23 +1,20 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import { Briefcase, Calendar, Train } from 'lucide-react'
+import { useEffect, useRef, RefObject } from 'react'
+import { Briefcase, Calendar } from 'lucide-react'
 import { Theme } from '../styles/themes'
 
 export default function AnimatedTimeline({ experience, theme }: { experience: any[], theme: Theme }) {
-  const timelineRef = useRef(null)
-  const trainRef = useRef(null)
+  const timelineRef: RefObject<HTMLDivElement> = useRef(null)
 
   useEffect(() => {
     const timeline = timelineRef.current
-    const train = trainRef.current
-    if (!timeline || !train) return
+    if (!timeline) return
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-draw')
-          train.classList.add('animate-train')
         }
       })
     }, { threshold: 0.1 })
@@ -30,29 +27,27 @@ export default function AnimatedTimeline({ experience, theme }: { experience: an
 
   return (
     <div ref={timelineRef} className="relative">
-      <div 
-        ref={trainRef}
-        className="absolute left-0 top-0 z-10 transition-all duration-1000 ease-in-out"
-        style={{ transform: 'translateY(-50%)' }}
-      >
-        <Train className={`${theme.icon} w-8 h-8`} />
-      </div>
       {experience.map((job, index) => (
-        <div key={index} className="timeline-item mb-8 flex opacity-0 transition-opacity duration-1000">
-          <div className={`w-12 h-12 rounded-full ${theme.iconBackground} flex items-center justify-center mr-4 z-10`}>
-            <Briefcase className={theme.icon} size={24} />
+        <div key={index} className="timeline-item mb-16 flex opacity-0 transition-opacity duration-1000">
+          <div className="relative">
+            <div className={`w-12 h-12 rounded-full ${theme.iconBackground} flex items-center justify-center mr-4 z-10 relative`}>
+              <Briefcase className={theme.icon} size={24} />
+            </div>
+            {index < experience.length - 1 && (
+              <div className={`absolute left-6 top-12 bottom-0 w-0.5 ${theme.timeline.line} timeline-line`} />
+            )}
           </div>
           <div className="flex-grow">
-            <h3 className={`font-semibold ${theme.text}`}>{job.title}</h3>
-            <p className={theme.text}>{job.company}</p>
-            <p className={`flex items-center ${theme.text}`}>
-              <Calendar size={16} className="mr-2" /> {job.year}
-            </p>
-            <p className="mt-2 text-gray-700">{job.description}</p>
+            <div className={`p-4 rounded-lg ${theme.card} relative`}>
+              <div className={`absolute top-4 left-0 w-4 h-4 ${theme.timeline.dot} transform rotate-45 -translate-x-2`} />
+              <h3 className={`font-semibold ${theme.text}`}>{job.title}</h3>
+              <p className={theme.text}>{job.company}</p>
+              <p className={`flex items-center ${theme.text}`}>
+                <Calendar size={16} className="mr-2" /> {job.year}
+              </p>
+              <p className="mt-2 text-gray-700">{job.description}</p>
+            </div>
           </div>
-          {index < experience.length - 1 && (
-            <div className={`absolute left-6 top-12 bottom-0 w-0.5 ${theme.timeline.line} timeline-line`} />
-          )}
         </div>
       ))}
       <style jsx>{`
@@ -71,17 +66,6 @@ export default function AnimatedTimeline({ experience, theme }: { experience: an
         }
         .animate-draw .timeline-line {
           height: 100%;
-        }
-        .animate-train {
-          animation: moveTrainAlongTimeline 5s forwards;
-        }
-        @keyframes moveTrainAlongTimeline {
-          0% {
-            transform: translateY(0);
-          }
-          100% {
-            transform: translateY(calc(100% - 32px));
-          }
         }
       `}</style>
     </div>
