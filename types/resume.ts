@@ -21,6 +21,8 @@ export interface Theme {
   timelineAnimation: string
   heroPattern: string
   floatingIcons: string
+  backgroundStyle: string
+
 }
 
 export interface Job {

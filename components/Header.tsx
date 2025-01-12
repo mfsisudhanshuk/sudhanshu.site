@@ -1,3 +1,5 @@
+'use client';
+
 import { GitlabIcon as GitHub, Linkedin, Mail, Lock } from 'lucide-react'
 import Link from 'next/link'
 import { Theme } from '../styles/themes'

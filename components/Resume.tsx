@@ -18,32 +18,42 @@ import {
 } from "lucide-react";
 import AnimatedTechIcons from "./AnimatedTechIcons";
 import AnimatedTimeline from "./AnimatedTimeline";
-import { Theme } from "../styles/themes";
+import { Theme, Job, Service, Skill, Activity } from "../types/resume";
 
-export default function Resume({ theme }: { theme: Theme }) {
-  const [name, setName] = useState("Sudhanshu Kumar");
-  const [title, setTitle] = useState("Senior Software Developer");
-  const [about, setAbout] = useState(
-    "I have 3+ years of experience in software development, specializing in creating efficient, data-driven web solutions. I am keen to apply my development expertise to deliver scalable, on-time projects. Proficient in building end-to-end applications with React.js, Node.js, Express.js, MongoDB, and Next.js, I am skilled in database design, RESTful API development, testing, and deployment.."
+interface ResumeProps {
+  theme: Theme;
+}
+
+export default function Resume({ theme }: ResumeProps) {
+  const [name, setName] = useState<string>("Sudhanshu Kumar");
+  const [title, setTitle] = useState<string>("Senior Software Developer");
+  const [about, setAbout] = useState<string>(
+    "I have 3+ years of experience in software development, specializing in creating efficient, data-driven web solutions. I am keen to apply my development expertise to deliver scalable, on-time projects. Proficient in building end-to-end applications with React.js, Node.js, Express.js, MongoDB, and Next.js, I am skilled in database design, RESTful API development, testing, and deployment."
   );
-  const [experience, setExperience] = useState([
+  const [experience, setExperience] = useState<Job[]>([
     {
-      title: "Senior Frontend Developer",
-      company: "Tech Co",
-      year: "2020-Present",
-      description:
+      title: "Senior Software Developer",
+      company: "Mindfire solutions",
+      year: "MAY 2022 - Present",
+      description: [
         "Leading a team of developers in creating cutting-edge web applications using React and Next.js.",
+        "Implementing best practices and design patterns to improve code quality and maintainability.",
+        "Collaborating with cross-functional teams to deliver high-quality software solutions.",
+      ],
     },
     {
-      title: "Frontend Developer",
-      company: "StartUp Inc",
-      year: "2018-2020",
-      description:
+      title: "Associate Software Developer",
+      company: "Accenture India",
+      year: "Sep 2021 - May 2022",
+      description: [
         "Developed and maintained multiple client websites using JavaScript, React, and Node.js.",
+        "Worked on optimizing application performance and improving user experience.",
+        "Participated in code reviews and contributed to the team's knowledge sharing sessions.",
+      ],
     },
   ]);
 
-  const [services, setServices] = useState([
+  const [services, setServices] = useState<Service[]>([
     {
       icon: <Code />,
       title: "Frontend Development",
@@ -64,16 +74,16 @@ export default function Resume({ theme }: { theme: Theme }) {
     },
   ]);
 
-  const [skills, setSkills] = useState([
+  const [skills, setSkills] = useState<Skill[]>([
     {
       category: "Frontend",
       icon: <Code />,
-      items: ["JavaScript/Typescript", "React", "Next.js", "HTML 5", "CSS", "Tailwind CSS", "Material MUI", "Microfrontend"," "],
+      items: ["JavaScript", "React", "Next.js", "HTML", "CSS", "Tailwind CSS"],
     },
     {
       category: "Backend",
       icon: <Server />,
-      items: ["Node.js", "Express","Fastify", "AWS Deployment/CI/CD","Data Scrapping", "GraphQL", "REST APIs", "Payment gateway Integration"],
+      items: ["Node.js", "Express", "GraphQL", "REST APIs"],
     },
     {
       category: "Database",
@@ -83,42 +93,42 @@ export default function Resume({ theme }: { theme: Theme }) {
     {
       category: "DevOps",
       icon: <Terminal />,
-      items: ["Docker", "CI/CD", "AWS","Ubuntu"],
+      items: ["Docker", "Kubernetes", "CI/CD", "AWS"],
     },
     {
       category: "Design",
       icon: <Palette />,
-      items: ["Responsive Design"],
+      items: ["Figma", "Adobe XD", "Responsive Design"],
     },
     {
       category: "Languages",
       icon: <Globe />,
-      items: ["Javascript/TypeScript", "Python", "C++"],
+      items: ["TypeScript", "Python", "Java"],
     },
   ]);
 
-  const [activities, setActivities] = useState([
+  const [activities, setActivities] = useState<Activity[]>([
     {
       icon: <GitBranch />,
       title: "Open Source Contributor",
       description:
-        "Actively contributing to various open-source projects in the MERN stack ecosystem.Current working on pivot table open source project.",
+        "Actively contributing to various open-source projects in the JavaScript ecosystem.",
     },
     {
       icon: <BookOpen />,
       title: "Tech Blogger",
       description:
-        "Reading and Writing articles on modern web development techniques and best practices.",
+        "Writing articles on modern web development techniques and best practices.",
     },
     {
       icon: <Users />,
       title: "Meetup Organizer",
       description:
-        "Organizing local MERN or c++ dsa meetups to foster community learning and networking.",
+        "Organizing local JavaScript meetups to foster community learning and networking.",
     },
   ]);
 
-  const [editMode, setEditMode] = useState(false);
+  const [editMode, setEditMode] = useState<boolean>(false);
 
   useEffect(() => {
     const isEditMode = localStorage.getItem("editMode") === "true";
@@ -164,7 +174,9 @@ export default function Resume({ theme }: { theme: Theme }) {
                 title: prompt("Job title:") || "",
                 company: prompt("Company:") || "",
                 year: prompt("Year:") || "",
-                description: prompt("Job description:") || "",
+                description: [
+                  prompt("Job description (first bullet point):") || "",
+                ],
               };
               if (newJob.title && newJob.company) {
                 setExperience([...experience, newJob]);
@@ -200,7 +212,7 @@ export default function Resume({ theme }: { theme: Theme }) {
         {editMode && (
           <button
             onClick={() => {
-              const newService = {
+              const newService: Service = {
                 title: prompt("Service title:") || "",
                 description: prompt("Service description:") || "",
                 icon: <Code />,
@@ -305,7 +317,7 @@ export default function Resume({ theme }: { theme: Theme }) {
         {editMode && (
           <button
             onClick={() => {
-              const newActivity = {
+              const newActivity: Activity = {
                 title: prompt("Activity title:") || "",
                 description: prompt("Activity description:") || "",
                 icon: <GitBranch />,
