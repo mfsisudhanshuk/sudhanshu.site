@@ -45,7 +45,7 @@ export default function AnimatedTimeline({ experience, theme }: { experience: an
               <p className={`flex items-center ${theme.text}`}>
                 <Calendar size={16} className="mr-2" /> {job.year}
               </p>
-              <p className="mt-2 text-gray-700">{job.description}</p>
+              <div className="mt-2 text-gray-700">{job.description}</div>
             </div>
           </div>
         </div>
