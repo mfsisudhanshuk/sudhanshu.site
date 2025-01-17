@@ -26,8 +26,6 @@ interface ResumeProps {
 }
 
 export default function Resume({ theme }: ResumeProps) {
-  console.log('theme ', theme);
-  console.log('button color ', theme.button);
   const [name, setName] = useState<string>("Sudhanshu Kumar");
   const [title, setTitle] = useState<string>("Senior Software Developer");
   const [about, setAbout] = useState<string>(
