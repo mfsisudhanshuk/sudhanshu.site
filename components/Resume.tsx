@@ -15,6 +15,7 @@ import {
   GitBranch,
   BookOpen,
   Users,
+  Download,
 } from "lucide-react";
 import AnimatedTechIcons from "./AnimatedTechIcons";
 import AnimatedTimeline from "./AnimatedTimeline";
@@ -25,6 +26,8 @@ interface ResumeProps {
 }
 
 export default function Resume({ theme }: ResumeProps) {
+  console.log('theme ', theme);
+  console.log('button color ', theme.button);
   const [name, setName] = useState<string>("Sudhanshu Kumar");
   const [title, setTitle] = useState<string>("Senior Software Developer");
   const [about, setAbout] = useState<string>(
@@ -139,20 +142,24 @@ export default function Resume({ theme }: ResumeProps) {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <section
-        className="mb-16 p-8 rounded-lg relative overflow-hidden"
-        style={{ background: theme.heroPattern }}
-      >
+       <section className="mb-16 p-8 rounded-lg relative overflow-hidden" 
+        style={{ background: theme.heroPattern }}>
         <AnimatedTechIcons theme={theme} />
         <div className="relative z-10">
           <h1 className={`text-4xl font-bold mb-4 ${theme.text}`}>{name}</h1>
           <p className={`text-xl mb-6 ${theme.text}`}>{title}</p>
           <p className="mb-4 text-gray-700">{about}</p>
+          <a
+            href="/path-to-your-cv.pdf"
+            download
+            className={`${theme.button} inline-flex items-center mb-4`}
+          >
+            <Download size={16} className="mr-2" />
+            Download CV
+          </a>
           {editMode && (
-            <button
-              onClick={() =>
-                setAbout(prompt("Update your about section:", about) || about)
-              }
+            <button 
+              onClick={() => setAbout(prompt('Update your about section:', about) || about)}
               className={theme.button}
             >
               <ButtonRipple />
