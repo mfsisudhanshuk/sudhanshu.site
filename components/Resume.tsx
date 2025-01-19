@@ -15,6 +15,7 @@ import {
   GitBranch,
   BookOpen,
   Users,
+  Download,
 } from "lucide-react";
 import AnimatedTechIcons from "./AnimatedTechIcons";
 import AnimatedTimeline from "./AnimatedTimeline";
@@ -36,9 +37,13 @@ export default function Resume({ theme }: ResumeProps) {
       company: "Mindfire solutions",
       year: "MAY 2022 - Present",
       description: [
-        "Leading a team of developers in creating cutting-edge web applications using React and Next.js.",
-        "Implementing best practices and design patterns to improve code quality and maintainability.",
-        "Collaborating with cross-functional teams to deliver high-quality software solutions.",
+        "Design and develop high-volume, low-latency applications for mission-critical systems, ensuring top-tier availability and maintained response times below 10 milliseconds, meeting top-tier availability and performance standards.",
+        "Contribute to all phases of the product development life cycle,resulting in the successful launch of the product within 3 months.",
+        "Facilitating system design and API planning for optimal functionality with standard security principles. CI/CD pipeline for auto deployment.",
+        "Collaborated with clients to gather and analyse requirements, orchestrating task delegation among team members optimised productivity and resource allocation, which led to a 20% reduction in development time",
+        "Worked closely with client to get the requirements, participated in code review, etc",
+        "Worked on open source project FOSS for my organisation ,created some tools and package in open source project",
+        "Tech Stack: Node.js,Express.js, React.js, MongoDB, Nginx, Typescript, Next.js, Docker, AWS , Redis, Ethereum blockchain integration."
       ],
     },
     {
@@ -46,9 +51,12 @@ export default function Resume({ theme }: ResumeProps) {
       company: "Accenture India",
       year: "Sep 2021 - May 2022",
       description: [
+        "Acquired proficiency in MERN stack (MongoDB, Express, ReactJS, Node.js) in 2 months through a comprehensive training program.",
         "Developed and maintained multiple client websites using JavaScript, React, and Node.js.",
-        "Worked on optimizing application performance and improving user experience.",
+        "Demonstrated technical expertise in resolving bugs with an accuracy rate of 98%, ensuring the stability and reliability of the software/system.",
+        "Acquired proficiency in MERN stack (MongoDB, Express, ReactJS, Node.js) in 2 months through a comprehensive training program.",
         "Participated in code reviews and contributed to the team's knowledge sharing sessions.",
+        "Tech Stack:React.js, Node.js, Express.js, HTML5, CSS3, JavaScript, Typescript, jQuery, AJAX, CSS frameworks."
       ],
     },
   ]);
@@ -58,7 +66,7 @@ export default function Resume({ theme }: ResumeProps) {
       icon: <Code />,
       title: "Frontend Development",
       description:
-        "Creating responsive and interactive user interfaces using modern JavaScript frameworks.",
+        "Creating responsive and interactive user interfaces using modern Typescript/JavaScript frameworks.",
     },
     {
       icon: <Server />,
@@ -68,9 +76,9 @@ export default function Resume({ theme }: ResumeProps) {
     },
     {
       icon: <Smartphone />,
-      title: "Mobile App Development",
+      title: "Content creation",
       description:
-        "Developing cross-platform mobile applications using React Native.",
+        "In free create content related to tech, DSA and other thing on youtube just to keep upskill myself.",
     },
   ]);
 
@@ -78,7 +86,7 @@ export default function Resume({ theme }: ResumeProps) {
     {
       category: "Frontend",
       icon: <Code />,
-      items: ["JavaScript", "React", "Next.js", "HTML", "CSS", "Tailwind CSS"],
+      items: ["JavaScript", "React", "Next.js", "HTML", "CSS", "Tailwind CSS","Remix"],
     },
     {
       category: "Backend",
@@ -93,17 +101,17 @@ export default function Resume({ theme }: ResumeProps) {
     {
       category: "DevOps",
       icon: <Terminal />,
-      items: ["Docker", "Kubernetes", "CI/CD", "AWS"],
+      items: ["Docker","CI/CD", "AWS"],
     },
     {
       category: "Design",
       icon: <Palette />,
-      items: ["Figma", "Adobe XD", "Responsive Design"],
+      items: ["Responsive Design"],
     },
     {
       category: "Languages",
       icon: <Globe />,
-      items: ["TypeScript", "Python", "Java"],
+      items: ["TypeScript","C++"],
     },
   ]);
 
@@ -139,20 +147,25 @@ export default function Resume({ theme }: ResumeProps) {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <section
-        className="mb-16 p-8 rounded-lg relative overflow-hidden"
-        style={{ background: theme.heroPattern }}
-      >
+       <section className="mb-16 p-8 rounded-lg relative overflow-hidden" 
+        style={{ background: theme.heroPattern }}>
         <AnimatedTechIcons theme={theme} />
         <div className="relative z-10">
           <h1 className={`text-4xl font-bold mb-4 ${theme.text}`}>{name}</h1>
           <p className={`text-xl mb-6 ${theme.text}`}>{title}</p>
           <p className="mb-4 text-gray-700">{about}</p>
+          <a
+            href="https://docs.google.com/document/d/1_sx4vLyFv30d5Z0WypvjvdxEeCVYAGQdjek89qsvWDY/edit?usp=sharing"
+            download
+            // className={`${theme.button} inline-flex items-center mb-4`} //TODO: Debug why class is not dynamically working.
+            className={`relative overflow-hidden group bg-blue-500 text-white hover:bg-blue-600 px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl`}
+          >
+            <Download size={16} className="mr-2" />
+            Download CV
+          </a>
           {editMode && (
-            <button
-              onClick={() =>
-                setAbout(prompt("Update your about section:", about) || about)
-              }
+            <button 
+              onClick={() => setAbout(prompt('Update your about section:', about) || about)}
               className={theme.button}
             >
               <ButtonRipple />
