@@ -157,8 +157,7 @@ export default function Resume({ theme }: ResumeProps) {
           <a
             href="https://docs.google.com/document/d/1_sx4vLyFv30d5Z0WypvjvdxEeCVYAGQdjek89qsvWDY/edit?usp=sharing"
             download
-            // className={`${theme.button} inline-flex items-center mb-4`} //TODO: Debug why class is not dynamically working.
-            className={`relative overflow-hidden group bg-blue-500 text-white hover:bg-blue-600 px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl`}
+            className={`${theme.button} inline-flex items-center mb-4`} //TODO: Debug why class is not dynamically working.
           >
             <Download size={16} className="mr-2" />
             Download CV
