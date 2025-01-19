@@ -23,9 +23,6 @@ export default function Header({ theme }: { theme: Theme }) {
             <a href="https://github.com/sd8917" target="_blank" rel="noopener noreferrer" className={theme.headerLink}>
               <GitHub size={20} />
             </a>
-            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className={theme.headerLink}>
-              <GitHub size={20} />
-            </a>
             <a href="https://www.linkedin.com/in/sudhanshu-site/" target="_blank" rel="noopener noreferrer" className={theme.headerLink}>
               <Linkedin size={20} />
             </a>
